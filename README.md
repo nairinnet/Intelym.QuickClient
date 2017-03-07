@@ -111,11 +111,11 @@ class Caller : QuickEvent
     {
         try { 
             handler = MarketData.GetInstance();
-            handler.setEventHanlder(this);
-            handler.SetAddress("localhost");
-            handler.SetPort(8100);
+            handler.setEventHandler(this);
+            handler.SetAddress("serveraddress");
+            handler.SetPort(serverport);
             handler.SetMulticastDetails("236.0.0.1", 6700);
-            handler.SetUserCredentials("hari", "password");
+            handler.SetUserCredentials("xxxx", "xxxxx");
             if (handler.Connect())
             {
                 System.Console.WriteLine("Connect initiated");
@@ -169,7 +169,6 @@ class Caller : QuickEvent
         {
             System.Console.WriteLine("Market Depth Packet Arrived");
         }
-        
-        
     }
+}
 ```
