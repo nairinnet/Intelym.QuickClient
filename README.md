@@ -91,8 +91,8 @@ Exchanges.MCX = 5
 
 Connecting and Disconnecting
 ```c#
-void Connect() // callback events of OnConnect() or OnError() will occur
-void Disconnect() // no callback, 100% disconnection
+bool Connect() // callback events of OnConnect() or OnError() will occur
+bool Disconnect() // no callback, 100% disconnection
 ```
 Enabling exchange news, set this method to true only if you want to receive exchange news, default is false
 ```c#
@@ -137,7 +137,7 @@ class Caller : QuickEvent
     public void OnConnect()
     {
         System.Console.WriteLine("Connect succeeded");
-        handler.AddScrip(Exchanges.NSE, 500325);
+        handler.AddScrip(Exchanges.BSE, 500325);
     }
 
     public void OnDisconnect(EventDetails details)
