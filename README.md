@@ -172,3 +172,45 @@ class Caller : QuickEvent
     }
 }
 ```
+
+# Packet Properties
+Packet
+```c#
+int ScripCode 
+int Exchange
+int Timestamp
+int Session
+```
+IndexPacket
+```c#
+int LastTradedPrice
+int ClosePrice
+```
+QuotePacket
+```c#
+ int LastTradedPrice 
+ int ClosePrice 
+ int BestBuyPrice 
+ int BestBuyQty 
+ int BestSellPrice 
+ int BestSellQty 
+ int HighPrice 
+ int LowPrice 
+ int OpenPrice 
+ int LastTradedQty 
+ int TotalTradedQty 
+ int WeightedAveragePrice 
+ int TotalBuy 
+ int TotalSell 
+ int TotalTradedValue 
+```
+MarketDepthPacket
+```c#
+ int NoOfRecords 
+ int[] BuyPrice 
+ int[] SellPrice 
+ int[] BuyQty 
+ int[] SellQty 
+ int[] BuyOrders 
+ int[] SellOrders 
+```
