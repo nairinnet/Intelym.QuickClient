@@ -41,6 +41,8 @@ there are four known subclasses, see at the end of this document for properties 
 * IndexPacket
 * QuotePacket
 * MarketDepthPacket
+* DerivativePacket
+* OpenInterestPacket
 * NewsPacket
 
 # Client instance and properties
@@ -169,6 +171,14 @@ class Caller : QuickEvent
         {
             System.Console.WriteLine("Market Depth Packet Arrived");
         }
+        else if (packet is DerivativePacket)
+        {
+            System.Console.WriteLine("Derivative Packet Arrived");
+        }
+        else if (packet is OpenInterestPacket)
+        {
+            System.Console.WriteLine("Open Interest Packet Arrived");
+        }
     }
 }
 ```
@@ -176,15 +186,15 @@ class Caller : QuickEvent
 # Packet Properties
 Packet
 ```c#
-int ScripCode 
-int Exchange
-int Timestamp
-int Session
+ int ScripCode 
+ int Exchange
+ int Timestamp
+ int Session
 ```
 IndexPacket
 ```c#
-int LastTradedPrice
-int ClosePrice
+ int LastTradedPrice
+ int ClosePrice
 ```
 QuotePacket
 ```c#
@@ -213,4 +223,15 @@ MarketDepthPacket
  int[] SellQty 
  int[] BuyOrders 
  int[] SellOrders 
+```
+DerivativePacket 
+```c#
+ int UnderlyingScripCode
+All of the fields of Quote Packet
+```
+OpenInterestPacket
+```c#
+ int OpenInterest
+ int LastTradedPrice
+ int TotalTradedQty
 ```
