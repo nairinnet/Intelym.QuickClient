@@ -71,6 +71,10 @@ Sets the multicast group and port details, use only if receiving data is on mult
 ```c#
 SetMulticastDetails(string mGroup, int mPort)
 ```
+If logging is required, call the below function with logging path
+```c#
+SetEnableLogging(string logPath)
+```
 Following methods are used to register/unregister scrips for quote, marketdepth and derivative chain
 ```c#
 bool AddScrip(int exchange, int scripCode)
