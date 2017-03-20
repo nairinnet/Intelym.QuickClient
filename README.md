@@ -192,7 +192,7 @@ Packet
 ```c#
  int ScripCode 
  int Exchange
- int Timestamp
+ long Timestamp
  int Session
 ```
 IndexPacket
