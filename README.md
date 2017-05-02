@@ -244,7 +244,8 @@ MarketDepthPacket
 DerivativePacket 
 ```c#
  int UnderlyingScripCode
-All of the fields of Quote Packet
+ bool IsIndex // to identify whether underlying is an index or not
+ string IndexName // populated only if IsIndex is true
 ```
 OpenInterestPacket
 ```c#
