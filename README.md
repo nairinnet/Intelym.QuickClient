@@ -236,7 +236,7 @@ MarketDepthPacket
 ```
 DerivativePacket 
 ```c#
- int UnderlyingScripCode
+ string UnderlyingScripCode
  bool IsIndex // to identify whether underlying is an index or not
  string IndexName // populated only if IsIndex is true
 ```
