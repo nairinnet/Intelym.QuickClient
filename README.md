@@ -75,22 +75,16 @@ If logging is required, call the below function with logging path
 ```c#
 SetEnableLogging(string logPath)
 ```
-The Index packets are received in strongly typed index codes, if you wish you receive use index names map the indexs using the following method
-```c#
-void MapIndex(string index, int indexCode) //refer index.properties for the codification
-```
 
 Following methods are used to register/unregister scrips for quote, marketdepth and derivative chain
 ```c#
-bool AddScrip(int exchange, int scripCode)
-bool AddScrip(int exchange, int[] scripCode)
-bool AddMarketDepth(int exchange, int scripCode)
-bool DeleteMarketDepth(int exchange, int scripCode)
-bool DeleteScrip(int exchange, int scripCode)
-bool AddDerivativeChain(int exchange, int scripCode) // underlying scripcode
-bool DeleteDerivativeChain(int exchange, int scripCode) // underlying scripcode
-bool AddIndex(string index);
-bool DeleteIndex(string index);
+bool AddScrip(int exchange, string scripCode)
+bool AddScrip(int exchange, string[] scripCode)
+bool AddMarketDepth(int exchange, string scripCode)
+bool DeleteMarketDepth(int exchange, string scripCode)
+bool DeleteScrip(int exchange, string scripCode)
+bool AddDerivativeChain(int exchange, string scripCode) // underlying scripcode
+bool DeleteDerivativeChain(int exchange, string scripCode) // underlying scripcode
 ```
 Exchange codification
 ```c#
@@ -129,7 +123,6 @@ class Caller : QuickEvent
             handler.SetPort(serverport);
             handler.SetMulticastDetails("236.0.0.1", 6700);
             handler.SetUserCredentials("xxxx", "xxxxx");
-            handler.MapIndex("NIFTY 50", 10);
             if (handler.Connect())
             {
                 System.Console.WriteLine("Connect initiated");
@@ -151,7 +144,7 @@ class Caller : QuickEvent
     public void OnConnect()
     {
         System.Console.WriteLine("Connect succeeded");
-        handler.AddScrip(Exchanges.BSE, 500325);
+        handler.AddScrip(Exchanges.BSE, "500325");
         handler.AddIndex("NIFTY 50");
     }
 
@@ -199,7 +192,7 @@ class Caller : QuickEvent
 # Packet Properties
 Packet
 ```c#
- int ScripCode 
+ string ScripCode 
  int Exchange
  long Timestamp
  int Session
