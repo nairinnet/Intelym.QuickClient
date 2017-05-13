@@ -37,13 +37,14 @@ int UNABLE_TO_CONNECT = 301/ /// when unable to connect to Quick server
 ```
 # Packet
 Packet class is an top most parent class for all the type of packets, 
-there are four known subclasses, see at the end of this document for properties of the subclasses
+these are known subclasses, see at the end of this document for properties of the subclasses
 * IndexPacket
 * QuotePacket
 * MarketDepthPacket
 * DerivativePacket
 * OpenInterestPacket
 * NewsPacket
+* UnsolicitedPacket
 
 # Client instance and properties
 The caller application is expected to get the instance of Handler and then access its properties and methods
@@ -165,7 +166,11 @@ class Caller : QuickEvent
 
     public void OnPacketArrived(Packet packet)
     {
-        if (packet is IndexPacket) 
+        if (packet is DerivativePacket)
+        {
+            System.Console.WriteLine("Derivative Packet Arrived");
+        }
+        else if (packet is IndexPacket) 
         {
             System.Console.WriteLine("Index Packet Arrived");
         }
@@ -177,9 +182,9 @@ class Caller : QuickEvent
         {
             System.Console.WriteLine("Market Depth Packet Arrived");
         }
-        else if (packet is DerivativePacket)
+        else if (packet is UnsolicitedPacket)
         {
-            System.Console.WriteLine("Derivative Packet Arrived");
+            System.Console.WriteLine("Unsolicited Packet Arrived");
         }
         else if (packet is OpenInterestPacket)
         {
@@ -245,4 +250,9 @@ OpenInterestPacket
  int OpenInterest
  int LastTradedPrice
  int TotalTradedQty
+```
+UnsolicitedPacket
+```c#
+string ClientCode
+string Message
 ```
